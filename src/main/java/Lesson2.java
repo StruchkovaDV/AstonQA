@@ -5,7 +5,7 @@ public class Lesson2 {
     Scanner scanner = new Scanner(System.in);
 
     public void printThreeWords(){
-        System.out.println("Orange, Banana, Apple");
+        System.out.println("Orange\nBanana\nApple");
     }
 
     public void checkSumSign(){
