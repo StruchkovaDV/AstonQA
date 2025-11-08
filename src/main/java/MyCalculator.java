@@ -1,8 +1,7 @@
 public class MyCalculator {
 
-    public MyCalculator() {
-    }
-
+    /** Метод работает для n <= 20, потом будет переполнение
+    */
     public long calculateFactorial(int n){
         if (n < 0){
             throw new IllegalArgumentException("Ошибка: Факториал вычисляется только для положительных чисел.");
