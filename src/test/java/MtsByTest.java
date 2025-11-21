@@ -151,6 +151,25 @@ public class MtsByTest {
         String valueButton = continueButton.getText();
         assertEquals("Продолжить", valueButton);
         continueButton.click();
+
+        wait.until(
+                ExpectedConditions.frameToBeAvailableAndSwitchToIt(
+                        By.xpath("//iframe[@class = 'bepaid-iframe']"))
+        );
+
+        WebElement payDescriptionCost = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(
+                        By.xpath("//div[contains(@class , 'pay-description__cost')]")
+                )
+        );
+        assertTrue(payDescriptionCost.getText().trim().contains("100"));
+
+        WebElement payDescriptionText = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(
+                        By.xpath("//div[contains(@class , 'pay-description__text')]")
+                )
+        );
+        assertTrue(payDescriptionText.getText().trim().contains("297777777"));
     }
 
     @AfterEach
