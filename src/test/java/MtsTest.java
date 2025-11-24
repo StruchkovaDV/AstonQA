@@ -1,6 +1,12 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -11,6 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Epic("mts.by")
+@Feature("Форма оплаты")
 public class MtsTest {
 
     private WebDriver driver;
@@ -74,6 +82,9 @@ public class MtsTest {
     }
 
     @Test
+    @Story("Заполнение полей оплаты и проверка работы кнопки \"Продолжить\"")
+    @Severity(SeverityLevel.CRITICAL)
+    @DisplayName("Проверка успешной оплаты по номеру 297777777")
     void checkContinueButton() {
         MtsPage mainPage = new MtsPage(driver)
                 .open()

@@ -3,6 +3,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import io.qameta.allure.Step;
 
 import java.util.List;
 
@@ -86,10 +87,12 @@ public class MtsPage extends BasePage {
         return new PaymentInfoPage(driver);
     }
 
+    @Step("Проверить, что выбран тип услуги по умолчанию")
     public String getSelectedServiceType() {
         return waitVisible(serviceTypeSelected).getText().trim();
     }
 
+    @Step("Заполнить номер телефона: {phone}")
     public MtsPage fillConnectionPhone(String phone) {
         type(connectionPhoneField, phone);
         return this;
@@ -99,6 +102,7 @@ public class MtsPage extends BasePage {
         return driver.findElement(connectionPhoneField).getAttribute("value");
     }
 
+    @Step("Заполнить сумму: {sum}")
     public MtsPage fillConnectionSum(String sum) {
         type(connectionSumField, sum);
         return this;
@@ -108,6 +112,7 @@ public class MtsPage extends BasePage {
         return driver.findElement(connectionSumField).getAttribute("value");
     }
 
+    @Step("Нажать кнопку \"Продолжить\"")
     public MtsPage clickContinue() {
         click(continueButton);
         return this;
@@ -117,6 +122,7 @@ public class MtsPage extends BasePage {
         return waitVisible(continueButton).getText();
     }
 
+    @Step("Переключиться на окно оплаты")
     public void switchToPaymentFrame() {
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(framePaymentWindow));
     }
